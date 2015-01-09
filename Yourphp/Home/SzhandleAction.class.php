@@ -42,7 +42,7 @@ class SzhandleAction extends BaseAction {
 		$auth = md5($token.$time);
 		$now = time();
 		$result = array();
-		if ($auth != $mac) {
+		if ($auth != $mac && $_GET['a'] != 'download') {
 			$result = array(
 				'status' => 0,
 				'error_msg' => '请求参数错误'
