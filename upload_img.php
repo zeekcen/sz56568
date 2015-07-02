@@ -1,6 +1,6 @@
 <?php
 $dir = '/var/www/nginx-default/pictures/';
-define('UPLOADS_PATH', '/var/www/nginx-default/Uploads/201425');
+define('UPLOADS_PATH', '/var/www/nginx-default/Uploads/201501');
 getSubDirs($dir);
 
 	function getSubDirs($dir) {
@@ -9,6 +9,7 @@ getSubDirs($dir);
 
 		while ($f = readdir($dh)) {
 			if($f =='.' || $f =='..') continue;
+			$f += 102;
 			$path = $dir.$f;
 			uploadImg($path, $f);
 		}

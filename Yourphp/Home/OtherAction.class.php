@@ -25,7 +25,7 @@ class OtherAction extends BaseAction
 	}
 
 	private function _move_img($path = '.', $company_id) {
-		define('UPLOADS_PATH', '/var/www/nginx-default/Uploads/201425');
+		define('UPLOADS_PATH', '/var/www/nginx-default/Uploads/201501');
 		// 找出该公司对应的相册数据
 		$ret = M('Pictures')->where("company_id = {$company_id}")->select();
 		//if ( ! $ret) return;
@@ -38,10 +38,8 @@ class OtherAction extends BaseAction
 			$idx = $len - 1;
 			$imgs_arr = $parts[$idx];
 		}
-
 		$current_dir = opendir($path); //opendir()返回一个目录句柄,失败返回false
 		$i = 1;
-echo '<pre>';
 		while(($file = readdir($current_dir)) !== false) { //readdir()返回打开目录句柄中的一个条目
 			$sub_dir = $path . DIRECTORY_SEPARATOR . $file; //构建子目录路径
 			if( ! is_dir($sub_dir)) {
@@ -92,8 +90,8 @@ echo '<pre>';
 		$i = 1;
 		$j = 0;
 		foreach ($_FILES['upfile']['tmp_name'] as $row) {
-			$j++;
-			if (1 == $j) continue;
+			//$j++;
+			//if (1 == $j) continue;
 			$str = file_get_contents($row);
 			$lines = explode("\n", $str);
 			switch($i) {
